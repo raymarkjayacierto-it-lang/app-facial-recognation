@@ -1,12 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
 
-type BgMode =
-  | "bg-default"
-  | "bg-happy"
-  | "bg-sad"
-  | "bg-angry"
-  | "bg-heart";
+type BgMode = "bg-default" | "bg-happy" | "bg-sad" | "bg-angry" | "bg-heart";
 
 export default function FaceDetector() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -63,7 +58,9 @@ export default function FaceDetector() {
         .withFaceExpressions()
         .withAgeAndGender();
 
-      const hasMale = detections.some((detection) => detection.gender === "male");
+      const hasMale = detections.some(
+        (detection) => detection.gender === "male",
+      );
       const hasFemale = detections.some(
         (detection) => detection.gender === "female",
       );
@@ -129,7 +126,7 @@ export default function FaceDetector() {
         ctx.fillStyle = "#ffffff";
         ctx.fillText(ageText, textX, textY);
       }
-    }, 200);
+    }, 100);
 
     return () => clearInterval(interval);
   };
@@ -164,7 +161,9 @@ export default function FaceDetector() {
   return (
     <section className="detector-shell">
       <div className="detector-panel">
-        {loading && <p className="status-pill status-neutral">Loading AI models...</p>}
+        {loading && (
+          <p className="status-pill status-neutral">Loading AI models...</p>
+        )}
         {!loading && <p className={pairClass}>{pairMessage}</p>}
 
         <div className="detector-frame">
