@@ -11,6 +11,7 @@
   --bg-default: radial-gradient(circle at 18% 12%, #1d2a49 0%, #0c1325 45%, #070b16 100%);
   --bg-happy: radial-gradient(circle at 20% 20%, #59d38c 0%, #1f9d55 45%, #0f5a32 100%);
   --bg-sad: radial-gradient(circle at 20% 20%, #e55f5f 0%, #b22222 45%, #5f1414 100%);
+  --bg-angry: radial-gradient(circle at 18% 12%, #ffb347 0%, #ff5a1f 40%, #8e1b00 72%, #260300 100%);
   --bg-heart: linear-gradient(140deg, #ffd7e7 0%, #ffc0d8 45%, #ffb1d0 100%);
   --panel-bg: rgba(8, 15, 32, 0.62);
   --panel-border: rgba(255, 255, 255, 0.2);
@@ -49,12 +50,49 @@ body.bg-happy {
   background: var(--bg-happy);
 }
 
+body.bg-happy::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image:
+    radial-gradient(circle, rgba(140, 255, 174, 0.95) 0 2px, transparent 2.6px),
+    radial-gradient(circle, rgba(102, 245, 153, 0.88) 0 1.6px, transparent 2.2px),
+    radial-gradient(circle, rgba(190, 255, 208, 0.8) 0 1.4px, transparent 2px);
+  background-size: 120px 120px, 160px 160px, 210px 210px;
+  background-position: 0 0, 40px 30px, 90px 110px;
+  animation: greenParticles 14s linear infinite;
+}
+
 body.bg-sad {
   background: var(--bg-sad);
 }
 
+body.bg-angry {
+  background: var(--bg-angry);
+}
+
 body.bg-heart {
   background: var(--bg-heart);
+}
+
+body.bg-angry::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  background-image:
+    radial-gradient(ellipse at 50% 115%, rgba(255, 120, 0, 0.55), transparent 58%),
+    radial-gradient(ellipse at 18% 108%, rgba(255, 201, 82, 0.34), transparent 46%),
+    radial-gradient(ellipse at 82% 108%, rgba(255, 67, 24, 0.38), transparent 48%),
+    radial-gradient(circle, rgba(255, 202, 105, 0.92) 0 2px, transparent 2.6px),
+    radial-gradient(circle, rgba(255, 120, 40, 0.85) 0 1.6px, transparent 2.2px),
+    radial-gradient(circle, rgba(255, 235, 170, 0.78) 0 1.2px, transparent 1.9px);
+  background-size: auto, auto, auto, 110px 110px, 160px 160px, 210px 210px;
+  background-position: center bottom, left bottom, right bottom, 0 0, 55px 25px, 120px 100px;
+  animation: fireParticles 7s linear infinite;
 }
 
 body.bg-heart::after {
@@ -65,6 +103,24 @@ body.bg-heart::after {
   opacity: 0.22;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Ctext x='26' y='48' font-size='26'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3Ctext x='78' y='108' font-size='22'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E");
   background-size: 140px 140px;
+}
+
+@keyframes fireParticles {
+  0% {
+    background-position: center bottom, left bottom, right bottom, 0 0, 55px 25px, 120px 100px;
+  }
+  100% {
+    background-position: center bottom, left bottom, right bottom, 34px -190px, -24px -230px, 62px -260px;
+  }
+}
+
+@keyframes greenParticles {
+  0% {
+    background-position: 0 0, 40px 30px, 90px 110px;
+  }
+  100% {
+    background-position: -22px -170px, 68px -210px, 28px -250px;
+  }
 }
 
 #root {

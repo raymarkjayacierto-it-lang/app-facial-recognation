@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
 
-type BgMode = "bg-default" | "bg-happy" | "bg-sad" | "bg-heart";
+type BgMode =
+  | "bg-default"
+  | "bg-happy"
+  | "bg-sad"
+  | "bg-angry"
+  | "bg-heart";
 
 export default function FaceDetector() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -82,7 +87,9 @@ export default function FaceDetector() {
           }
         }
 
-        if (strongestExpression?.label === "happy") {
+        if (strongestExpression?.label === "angry") {
+          nextMode = "bg-angry";
+        } else if (strongestExpression?.label === "happy") {
           nextMode = "bg-happy";
         } else if (strongestExpression?.label === "sad") {
           nextMode = "bg-sad";
@@ -132,7 +139,13 @@ export default function FaceDetector() {
   }, []);
 
   useEffect(() => {
-    const classes: BgMode[] = ["bg-default", "bg-happy", "bg-sad", "bg-heart"];
+    const classes: BgMode[] = [
+      "bg-default",
+      "bg-happy",
+      "bg-sad",
+      "bg-angry",
+      "bg-heart",
+    ];
     document.body.classList.remove(...classes);
     document.body.classList.add(bgMode);
 
