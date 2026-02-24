@@ -185,6 +185,75 @@ body.bg-heart::after {
   box-shadow: 0 28px 58px rgba(0, 0, 0, 0.35);
 }
 
+.enroll-panel {
+  margin: 0 0 0.85rem;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(6, 13, 28, 0.55);
+}
+
+.enroll-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.enroll-text {
+  margin: 0.35rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
+.enroll-actions {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.enroll-meta {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.enroll-form {
+  margin-top: 0.7rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem;
+}
+
+.enroll-input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f4f7ff;
+  padding: 0.46rem 0.58rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+}
+
+.enroll-input::placeholder {
+  color: rgba(233, 240, 255, 0.62);
+}
+
+.enroll-button {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(105, 180, 255, 0.22);
+  color: #f2f7ff;
+  border-radius: 8px;
+  padding: 0.45rem 0.66rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.enroll-button:hover {
+  background: rgba(105, 180, 255, 0.32);
+}
+
 .status-pill {
   width: fit-content;
   margin: 0 auto 0.85rem;
@@ -245,5 +314,9 @@ body.bg-heart::after {
 
   .status-pill {
     font-size: 0.8rem;
+  }
+
+  .enroll-form {
+    grid-template-columns: 1fr;
   }
 }
